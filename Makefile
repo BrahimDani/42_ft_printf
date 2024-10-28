@@ -6,7 +6,7 @@
 #    By: brdani <brdani@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/26 01:08:42 by brdani            #+#    #+#              #
-#    Updated: 2024/10/26 06:48:52 by brdani           ###   ########.fr        #
+#    Updated: 2024/10/28 03:05:05 by brdani           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS = ft_printf.c \
 		ft_print_str.c \
 		ft_print_decimal.c \
 		ft_putnbr_base.c \
-		testmain.c
+		ft_print_unsigned.c
 
 OBJS = $(SRCS:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
@@ -23,9 +23,6 @@ CC = cc
 HEADER = ft_printf.h
 
 all: $(NAME)
-
-test: $(NAME) testmain.c
-	$(CC) $(CFLAGS) testmain.c ft_printf.a -o test_program
 
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)

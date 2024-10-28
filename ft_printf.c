@@ -6,7 +6,7 @@
 /*   By: brdani <brdani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:37:18 by brdani            #+#    #+#             */
-/*   Updated: 2024/10/26 06:57:09 by brdani           ###   ########.fr       */
+/*   Updated: 2024/10/28 03:17:44 by brdani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ int	ft_putchar(char c)
 	return (1);
 }
 
+int	execute_p_format(va_list args, int i)
+{
+	unsigned long long	nb;
+
+	nb = va_arg(args, unsigned long long);
+	if (nb == 0)
+		return (ft_putstr("(nil)"));
+	i += ft_putstr("0x");
+	i += ft_putnbr_base(nb, "0123456789abcdef");
+	return (i);
+}
+
 int	ft_print_format(va_list args, const char format)
 {
 	int	i;
@@ -41,18 +53,15 @@ int	ft_print_format(va_list args, const char format)
 	else if (format == 'c')
 		i += ft_putchar(va_arg(args, int));
 	else if (format == 'p')
-	{
-		i += ft_putstr("0x");
-		i += ft_putnbr_base(va_arg(args, unsigned long long), \
-		"0123456789abcdef");
-	}
+		i += execute_p_format(args, i);
 	else if (format == 'u')
-		i += ft_putnbr_base(va_arg(args, unsigned long long), "0123456789");
-	else if (format == 'x' || format == 'X')
-	{
-		i += ft_putnbr_base(va_arg(args, unsigned long long), \
+		i += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (format == 'X')
+		i += ft_putnbr_base(va_arg(args, unsigned int), \
 		"0123456789ABCDEF");
-	}
+	else if (format == 'x')
+		i += ft_putnbr_base(va_arg(args, unsigned int), \
+		"0123456789abcdef");
 	else if (format == '%')
 		i += ft_putchar('%');
 	return (i);

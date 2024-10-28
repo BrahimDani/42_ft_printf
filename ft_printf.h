@@ -6,7 +6,7 @@
 /*   By: brdani <brdani@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 01:02:58 by brdani            #+#    #+#             */
-/*   Updated: 2024/10/26 06:49:00 by brdani           ###   ########.fr       */
+/*   Updated: 2024/10/27 02:09:59 by brdani           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	ft_putnbr(int nb);
 int	ft_print_format(va_list args, const char format);
 int	ft_printf(const char *format, ...);
 int	ft_putnbr_base(unsigned long long nb, char *base);
-int	main(void);
+int	ft_print_unsigned(unsigned int nb);
 
 #endif
